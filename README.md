@@ -1,10 +1,10 @@
 # Verification Collapse in AI-Assisted Requirements Decisions
 
-Supplementary artifacts for the HCARE 2026 position paper:
+Supplementary artifacts for an HCARE 2026 submission:
 
 **Verification Collapse in AI-Assisted Requirements Decisions: Toward Human-Centered Decision Traceability**
 
-This repository contains lightweight, anonymized materials that make the paper's proposed mechanism and workflow easier to inspect, reproduce, and extend.
+This repository contains lightweight, anonymized materials that make the proposed mechanism and workflow easier to inspect and run.
 
 ## What this repository contains
 
@@ -18,16 +18,17 @@ verification-collapse-hcare2026/
 ├── protocols/
 │   └── expert_walkthrough_protocol.md
 ├── requirements.txt
-├── .gitignore
 ├── LICENSE
 └── README.md
 ```
 
 ## Scope
 
-This repository is **not** an empirical dataset. It does **not** contain organizational logs, private business data, internal PRDs, meeting recordings, customer tickets, source code, production metrics, or company-identifying materials.
+This repository is not an empirical dataset.
 
-The simulation is intended as a **mechanism probe** and **hypothesis generator**, not as an empirical validation of real organizational behavior. It formalizes how workload-sensitive trust dynamics could suppress meaningful human verification in AI-assisted requirements approval workflows.
+It does not contain organizational logs, private business data, internal PRDs, meeting recordings, source code, production metrics, customer-identifying materials, or company-identifying materials.
+
+The simulation is intended as a **mechanism probe** and **hypothesis generator**, not as empirical validation of real organizational behavior.
 
 ## How to run the simulation
 
@@ -59,11 +60,62 @@ outputs/simulation_results.png
 
 **Verification collapse** refers to a candidate workflow-level failure mode in which formal human approval degrades into passive acceptance without meaningful verification.
 
-**Requirements decision traceability** refers to the ability to connect a requirement decision with its source context, assumptions, stakeholders, alternatives, risks, approval rationale, change history, release evidence, and post-release learning.
+**Requirements decision traceability** refers to the ability to connect a requirements decision with its source context, assumptions, stakeholders, alternatives, risks, approval rationale, change history, release evidence, and post-release learning.
 
-## Repository status
+## Included artifacts
 
-This repository supports a workshop position paper. It should be read as supplementary material for conceptual inspection, not as evidence of a completed field deployment or expert evaluation.
+### 1. Simulation
+
+Path:
+
+```text
+simulation/simulation.py
+```
+
+The simulation models a minimal AI-assisted requirements approval workflow:
+
+```text
+Employee → AI Assistant → Manager → Decision
+```
+
+It explores how workload-sensitive trust dynamics may reduce human verification when modeled AI reliability appears high.
+
+### 2. Workflow table
+
+Path:
+
+```text
+artifacts/workflow_table.md
+```
+
+This file summarizes the six-stage human-centered AI workflow proposed in the paper:
+
+1. Context completion
+2. Pre-analysis
+3. Admission decision
+4. Change control
+5. Release validation
+6. Post-hoc review
+
+### 3. Decision trace template
+
+Path:
+
+```text
+artifacts/decision_trace_template.md
+```
+
+This template shows how a requirements decision can be recorded through source anchors, uncertainty markers, sign-off records, and decision-owner fields.
+
+### 4. Expert walkthrough protocol
+
+Path:
+
+```text
+protocols/expert_walkthrough_protocol.md
+```
+
+This protocol describes a planned future evaluation. It is not an executed study and does not report empirical findings.
 
 ## Suggested citation
 
@@ -72,7 +124,8 @@ This repository supports a workshop position paper. It should be read as supplem
   title        = {Supplementary Artifacts for Verification Collapse in AI-Assisted Requirements Decisions},
   author       = {Zhimin Wang},
   year         = {2026},
-  howpublished = {\url{https://github.com/MyraWang0406/verification-collapse-hcare2026}},
+  howpublished = {GitHub repository},
+  url          = {https://github.com/MyraWang0406/verification-collapse-hcare2026},
   note         = {Supplementary artifact repository for an HCARE 2026 submission}
 }
 ```
