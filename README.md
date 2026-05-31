@@ -1,12 +1,14 @@
 # Verification Collapse in AI-Assisted Requirements Decisions
 
-Supplementary artifacts for an HCARE 2026 submission:
+Supplementary artifacts for the HCARE 2026 position paper:
 
 **Verification Collapse in AI-Assisted Requirements Decisions: Toward Human-Centered Decision Traceability**
 
-This repository contains lightweight, anonymized materials that make the proposed mechanism and workflow easier to inspect and run.
+This repository contains lightweight, anonymized materials that support the paper's conceptual argument and make the proposed mechanism and workflow easier to inspect.
 
-## What this repository contains
+The repository is intended to support transparency and reproducibility of the conceptual mechanism, not to claim empirical validation.
+
+## Repository structure
 
 ```text
 verification-collapse-hcare2026/
@@ -18,17 +20,16 @@ verification-collapse-hcare2026/
 ├── protocols/
 │   └── expert_walkthrough_protocol.md
 ├── requirements.txt
-├── LICENSE
 └── README.md
 ```
 
 ## Scope
 
-This repository is not an empirical dataset.
+This repository is not an empirical dataset and does not contain organizational logs, private business data, or company-identifying materials.
 
-It does not contain organizational logs, private business data, internal PRDs, meeting recordings, source code, production metrics, customer-identifying materials, or company-identifying materials.
+The simulation is intended as a mechanism probe and hypothesis generator, not as an empirical validation of real organizational behavior. It formalizes how workload-sensitive trust dynamics could suppress meaningful human verification in AI-assisted requirements approval workflows.
 
-The simulation is intended as a **mechanism probe** and **hypothesis generator**, not as empirical validation of real organizational behavior.
+The workflow table, decision-trace template, and expert walkthrough protocol are provided as research artifacts for discussion, replication, and future evaluation.
 
 ## How to run the simulation
 
@@ -62,71 +63,34 @@ outputs/simulation_results.png
 
 **Requirements decision traceability** refers to the ability to connect a requirements decision with its source context, assumptions, stakeholders, alternatives, risks, approval rationale, change history, release evidence, and post-release learning.
 
-## Included artifacts
+## Artifact overview
 
-### 1. Simulation
+| Artifact | Path | Purpose |
+|---|---|---|
+| Simulation script | `simulation/simulation.py` | Illustrates how workload-sensitive trust dynamics may lead to reduced human verification. |
+| Workflow table | `artifacts/workflow_table.md` | Converts the position paper's workflow into inspectable AI-support and human-gate stages. |
+| Decision trace template | `artifacts/decision_trace_template.md` | Provides a reusable template for recording source anchors, uncertainty markers, sign-off records, and decision-owner fields. |
+| Expert walkthrough protocol | `protocols/expert_walkthrough_protocol.md` | Provides a planned protocol for future expert review of the workflow and template. |
 
-Path:
+## Core trace fields
 
-```text
-simulation/simulation.py
-```
+The proposed workflow centers on four verifiable trace fields:
 
-The simulation models a minimal AI-assisted requirements approval workflow:
-
-```text
-Employee → AI Assistant → Manager → Decision
-```
-
-It explores how workload-sensitive trust dynamics may reduce human verification when modeled AI reliability appears high.
-
-### 2. Workflow table
-
-Path:
-
-```text
-artifacts/workflow_table.md
-```
-
-This file summarizes the six-stage human-centered AI workflow proposed in the paper:
-
-1. Context completion
-2. Pre-analysis
-3. Admission decision
-4. Change control
-5. Release validation
-6. Post-hoc review
-
-### 3. Decision trace template
-
-Path:
-
-```text
-artifacts/decision_trace_template.md
-```
-
-This template shows how a requirements decision can be recorded through source anchors, uncertainty markers, sign-off records, and decision-owner fields.
-
-### 4. Expert walkthrough protocol
-
-Path:
-
-```text
-protocols/expert_walkthrough_protocol.md
-```
-
-This protocol describes a planned future evaluation. It is not an executed study and does not report empirical findings.
+1. **Source anchors**: which PRD, ticket, meeting note, test record, dashboard, or stakeholder statement supports each requirement claim.
+2. **Uncertainty markers**: which assumptions, dependencies, edge cases, or business rules remain unverified.
+3. **Sign-off records**: which major changes were accepted, by whom, why, and with what schedule or risk implications.
+4. **Decision-owner fields**: which human role accepted the residual risk behind the requirement decision.
 
 ## Suggested citation
 
 ```bibtex
 @misc{wang2026verificationcollapseartifact,
-  title        = {Supplementary Artifacts for Verification Collapse in AI-Assisted Requirements Decisions},
-  author       = {Zhimin Wang},
-  year         = {2026},
+  title = {Supplementary Artifacts for Verification Collapse in AI-Assisted Requirements Decisions},
+  author = {Wang, Zhimin},
+  year = {2026},
   howpublished = {GitHub repository},
-  url          = {https://github.com/MyraWang0406/verification-collapse-hcare2026},
-  note         = {Supplementary artifact repository for an HCARE 2026 submission}
+  url = {https://github.com/MyraWang0406/verification-collapse-hcare2026},
+  note = {Supplementary artifact repository for an HCARE 2026 submission}
 }
 ```
 
