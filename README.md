@@ -19,6 +19,9 @@ verification-collapse-hcare2026/
 │   └── workflow_table.md
 ├── protocols/
 │   └── expert_walkthrough_protocol.md
+├── outputs/
+│   ├── results_summary.csv
+│   └── simulation_results.png
 ├── requirements.txt
 └── README.md
 ```
@@ -27,7 +30,7 @@ verification-collapse-hcare2026/
 
 This repository is not an empirical dataset and does not contain organizational logs, private business data, or company-identifying materials.
 
-The simulation is intended as a mechanism probe and hypothesis generator, not as an empirical validation of real organizational behavior. It formalizes how workload, perceived AI reliability, context quality, role clarity, implementation evidence, and verification effort could interact in AI-assisted requirements approval workflows.
+The simulation is a mechanism probe and hypothesis generator, not an empirical validation of real organizational behavior. It formalizes how workload, perceived AI reliability, context quality, role clarity, implementation evidence, and verification effort could interact in AI-assisted requirements approval workflows.
 
 The workflow table, decision-trace template, and expert walkthrough protocol are provided as research artifacts for discussion, replication, and future evaluation.
 
@@ -51,7 +54,19 @@ The script creates an `outputs/` folder containing:
 outputs/results_summary.csv
 outputs/timestep_results.csv
 outputs/simulation_results.png
+outputs/simulation_results.pdf
 ```
+
+`results_summary.csv` contains the values reported in the paper. `timestep_results.csv` contains all per-step records and can be regenerated locally.
+
+## What perceived AI reliability means
+
+In the simulation, `perceived_ai_reliability` does not mean ground-truth correctness. It means that AI output appears reliable to the manager or workflow. This distinction matters because fluent AI output can look convincing even when:
+
+1. source evidence is missing or fragmented;
+2. the prompt is too abstract for implementation;
+3. multi-person conversations mix roles and responsibilities;
+4. an AI coding agent claims completion without reproducible repository evidence.
 
 ## What the simulation models
 
@@ -60,16 +75,22 @@ The simulation compares two workflow policies.
 | Policy | Meaning |
 |---|---|
 | `approval_only` | A formal approval workflow where managers mainly rely on perceived AI confidence under workload pressure. Voluntary verification declines as trust increases. |
-| `trace_gated` | A workflow where source checks, uncertainty checks, role checks, sign-off records, and repository-level reproduction checks can interrupt passive acceptance. |
+| `trace_gated` | A workflow where source anchors, uncertainty markers, role/owner checks, sign-off records, and repository-level reproduction checks are required with high but imperfect compliance. Missing required gates usually block approval. |
 
-The revised model separates **perceived AI reliability** from **substantive correctness**. This distinction is important because fluent AI output can sound reliable even when implementation details, source evidence, role boundaries, or historical code context are missing.
-
-The simulation includes four hidden failure modes:
+The model includes four hidden failure modes:
 
 1. **Source gaps**: source evidence is missing, fragmented, or weak.
-2. **Prompt abstraction gaps**: the prompt contains business rationale or design intent but not enough implementation detail, acceptance criteria, or code context.
-3. **Role-context mismatch**: long or multi-person AI conversations mix stakeholder roles, responsibilities, or decision authority.
+2. **Prompt-abstraction gaps**: the prompt contains business rationale or design intent but not enough implementation detail, acceptance criteria, or code context.
+3. **Role-context mismatches**: long or multi-person AI conversations mix stakeholder roles, responsibilities, or decision authority.
 4. **Implementation-claim gaps**: an AI coding agent claims that something is implemented, but the repository or test evidence does not reproduce that claim.
+
+## Boundary of the simulation
+
+The simulation does not prove that verification collapse occurs in real organizations. It encodes a small set of assumptions so that readers can inspect and challenge the mechanism. The comparison should be read as:
+
+> If managers rely on perceived AI reliability under workload, voluntary checking may erode. If a workflow requires source, uncertainty, role, and reproduction gates, hidden failures are more likely to be blocked before formal approval.
+
+The model therefore supports conceptual clarification, not empirical measurement.
 
 ## Key concepts
 
