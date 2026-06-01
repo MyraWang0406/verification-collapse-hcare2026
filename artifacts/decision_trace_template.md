@@ -9,7 +9,7 @@ It is designed to preserve four kinds of trace evidence:
 3. Sign-off records
 4. Decision-owner fields
 
-The template is not intended to replace existing requirement tools. It can be attached to a PRD, ticket, design review, release record, or post-hoc review.
+The template is not intended to replace existing requirement tools. It can be attached to a PRD, ticket, design review, release record, implementation review, or post-hoc review.
 
 ---
 
@@ -21,7 +21,7 @@ The template is not intended to replace existing requirement tools. It can be at
 | Decision ID |  |
 | Date |  |
 | Product / system area |  |
-| Decision status | proposed / accepted / rejected / postponed / changed / released |
+| Decision status | proposed / accepted / rejected / postponed / changed / implemented / released |
 | Short description |  |
 | AI tool used |  |
 | Human decision owner |  |
@@ -40,6 +40,7 @@ List the source materials used to support the requirement claim.
 | Ticket / issue |  |  |  | unchecked |
 | Data / dashboard |  |  |  | unchecked |
 | Test / QA record |  |  |  | unchecked |
+| Repository / commit / PR |  |  |  | unchecked |
 | Stakeholder statement |  |  |  | unchecked |
 | User feedback |  |  |  | unchecked |
 
@@ -59,7 +60,35 @@ Write the requirement claim in one or two sentences.
 
 ---
 
-## 4. Key assumptions
+## 4. Prompt and context quality
+
+Use this section when AI output is used to generate analysis, specifications, code, or implementation plans.
+
+| Check item | Evidence | Status |
+|---|---|---|
+| Prompt includes concrete user task, not only background or motivation. |  | yes / no / unclear |
+| Prompt includes acceptance criteria or expected output. |  | yes / no / unclear |
+| Prompt includes historical code / repository context when implementation is requested. |  | yes / no / unclear |
+| Prompt separates business rationale from implementation instruction. |  | yes / no / unclear |
+| Prompt separates emotional context from actionable task. |  | yes / no / unclear |
+
+---
+
+## 5. Role and responsibility context
+
+Use this section when multiple people or roles interact with AI outputs.
+
+| Role / actor | Responsibility in this decision | What AI should do for this role | What AI should not do for this role | Confirmed by |
+|---|---|---|---|---|
+| Product / PM |  |  |  |  |
+| Operations / business |  |  |  |  |
+| Engineering |  |  |  |  |
+| QA / testing |  |  |  |  |
+| Manager / approver |  |  |  |  |
+
+---
+
+## 6. Key assumptions
 
 Record assumptions that influence the decision.
 
@@ -71,7 +100,7 @@ Record assumptions that influence the decision.
 
 ---
 
-## 5. Uncertainty markers
+## 7. Uncertainty markers
 
 Record what remains unclear, risky, or under-verified.
 
@@ -83,7 +112,7 @@ Record what remains unclear, risky, or under-verified.
 
 ---
 
-## 6. Affected systems and dependencies
+## 8. Affected systems and dependencies
 
 | System / module | Expected impact | Dependency owner | Risk level | Notes |
 |---|---|---|---|---|
@@ -93,7 +122,22 @@ Record what remains unclear, risky, or under-verified.
 
 ---
 
-## 7. Alternatives considered
+## 9. Implementation evidence and reproduction check
+
+Use this section when AI claims that code, configuration, workflow, or data-processing logic has been implemented.
+
+| Check item | Evidence link / command | Checked by | Status |
+|---|---|---|---|
+| Repository branch / commit / PR exists. |  |  | not checked / passed / failed |
+| Claimed files or modules changed. |  |  | not checked / passed / failed |
+| Installation or build command runs. |  |  | not checked / passed / failed |
+| Core workflow can be reproduced locally or in CI. |  |  | not checked / passed / failed |
+| Output matches the requirement or acceptance criteria. |  |  | not checked / passed / failed |
+| Known limitations are documented. |  |  | not checked / passed / failed |
+
+---
+
+## 10. Alternatives considered
 
 | Alternative | Reason considered | Reason accepted or rejected | Evidence |
 |---|---|---|---|
@@ -102,18 +146,19 @@ Record what remains unclear, risky, or under-verified.
 
 ---
 
-## 8. Sign-off record
+## 11. Sign-off record
 
 | Decision item | Approved by | Role | Date | Rationale | Conditions |
 |---|---|---|---|---|---|
 | Initial admission |  |  |  |  |  |
 | Major change |  |  |  |  |  |
+| Implementation claim |  |  |  |  |  |
 | Release readiness |  |  |  |  |  |
 | Residual risk acceptance |  |  |  |  |  |
 
 ---
 
-## 9. Change-control record
+## 12. Change-control record
 
 Use this section when the requirement changes after initial admission.
 
@@ -124,7 +169,7 @@ Use this section when the requirement changes after initial admission.
 
 ---
 
-## 10. Release validation
+## 13. Release validation
 
 | Acceptance criterion | Evidence | Verified by | Status |
 |---|---|---|---|
@@ -134,7 +179,7 @@ Use this section when the requirement changes after initial admission.
 
 ---
 
-## 11. Post-release review
+## 14. Post-release review
 
 | Field | Content |
 |---|---|
@@ -148,7 +193,7 @@ Use this section when the requirement changes after initial admission.
 
 ---
 
-## 12. Verification checklist
+## 15. Verification checklist
 
 Before closing the decision trace, check the following items.
 
@@ -156,15 +201,18 @@ Before closing the decision trace, check the following items.
 |---|---|
 | Source anchors are recorded. | yes / no |
 | Unverified assumptions are marked. | yes / no |
+| Role and responsibility boundaries are confirmed. | yes / no |
+| Prompt and context quality are checked. | yes / no |
 | Major changes have sign-off records. | yes / no |
 | A human decision owner is named. | yes / no |
+| Implementation claims are backed by repository, test, or reproduction evidence. | yes / no / not applicable |
 | Residual risks are explicitly accepted or escalated. | yes / no |
 | Release validation evidence is linked. | yes / no |
 | Post-release learning is recorded. | yes / no |
 
 ---
 
-## 13. Notes
+## 16. Notes
 
 Use this section for additional comments, unresolved questions, or contextual details that do not fit the tables above.
 
